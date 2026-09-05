@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Crucify Rift Party - Community Rift Party">
+<title>CRUCIFY RIFT PARTY</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================================================
+   JOIN WARNING / PRANK
+   ========================================================= */
+
+.join-warning {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(5, 5, 8, 0.95);
+    backdrop-filter: blur(14px);
+
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.join-warning.show {
+    display: flex;
+    opacity: 1;
+}
+
+
+/* BOX PERINGATAN */
+
+.warning-box {
+    width: min(650px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111218,
+            #191b23
+        );
+
+    border: 2px solid #f5bf03;
+
+    box-shadow:
+        0 0 20px rgba(245, 191, 3, 0.20),
+        0 0 70px rgba(245, 191, 3, 0.08);
+
+    transform: scale(0.88);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.join-warning.show .warning-box {
+    transform: scale(1);
+}
+
+
+/* =========================================================
+   LOGO PERINGATAN
+   MERAH
+   ========================================================= */
+
+.warning-symbol {
+    font-size: 52px;
+
+    color: #ff2b2b;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 10px rgba(255, 43, 43, 0.65),
+        0 0 25px rgba(255, 43, 43, 0.35);
+
+    animation: warningPulse 1.4s infinite;
+}
+
+@keyframes warningPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   JUDUL KECIL
+   EMAS
+   ========================================================= */
+
+.warning-small {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #f5bf03;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   JUDUL BESAR
+   ========================================================= */
+
+.warning-box h2 {
+
+    margin: 0 0 22px;
+
+    color: #ffffff;
+
+    font-size: clamp(30px, 6vw, 52px);
+
+    line-height: 1;
+
+    letter-spacing: 2px;
+}
+
+
+/* bagian judul emas */
+
+.warning-box h2 span {
+
+    color: #f5bf03;
+
+    text-shadow:
+        0 0 10px rgba(245, 191, 3, 0.25);
+}
+
+
+/* =========================================================
+   TEKS UTAMA
+   PUTIH
+   ========================================================= */
+
+.warning-text {
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   LIST PERINGATAN
+   ========================================================= */
+
+.warning-list {
+
+    margin: 20px 0 25px;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+.warning-list li {
+
+    position: relative;
+
+    padding: 9px 0 9px 30px;
+
+    color: #ffffff;
+
+    line-height: 1.6;
+}
+
+
+/* BINTANG EMAS */
+
+.warning-list li::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    left: 0;
+
+    color: #f5bf03;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 8px rgba(245, 191, 3, 0.45);
+}
+
+
+/* =========================================================
+   RULES YANG DITEKANKAN
+   ========================================================= */
+
+.warning-box strong {
+
+    color: #f5bf03;
+}
+
+
+/* =========================================================
+   BOX FINAL
+   ========================================================= */
+
+.warning-final {
+
+    margin-top: 25px;
+
+    padding: 18px;
+
+    border-left: 4px solid #f5bf03;
+
+    background:
+        rgba(245, 191, 3, 0.06);
+
+    color: #ffffff;
+
+    line-height: 1.7;
+
+    box-shadow:
+        inset 0 0 20px rgba(245, 191, 3, 0.025);
+}
+
+
+/* =========================================================
+   PETUNJUK KEMBALI KE ATAS
+   ========================================================= */
+
+.warning-direction {
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    color: #f5bf03;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    animation: arrowBounce 1.3s infinite;
+}
+
+@keyframes arrowBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* =========================================================
+   TOMBOL PERINGATAN
+   ========================================================= */
+
+.warning-close {
+
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 16px 22px;
+
+    border: 2px solid #f5bf03;
+
+    background: #f5bf03;
+
+    color: #0b0d0a;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.warning-close:hover {
+
+    transform: translateY(-3px);
+
+    background: #ffffff;
+
+    border-color: #ffffff;
+
+    box-shadow:
+        0 0 25px rgba(245, 191, 3, 0.35);
+}
+
+
+/* =========================================================
+   EFEK JOIN SETELAH PERINGATAN
+   ========================================================= */
+
+.join-ready {
+
+    animation: joinReady 1.5s infinite;
+}
+
+@keyframes joinReady {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 rgba(245, 191, 3, 0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(245, 191, 3, 0.45);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .join-warning {
+        padding: 14px;
+    }
+
+    .warning-box {
+
+        padding: 25px 20px;
+
+        max-height: 92vh;
+    }
+
+    .warning-symbol {
+        font-size: 38px;
+    }
+
+    .warning-text,
+    .warning-list li,
+    .warning-final {
+
+        font-size: 14px;
+    }
+
+    .warning-box h2 {
+
+        font-size: 32px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     BACKGROUND
+     ========================================================= -->
+
+<div class="background-grid"></div>
+
+<div class="background-glow glow-one"></div>
+
+<div class="background-glow glow-two"></div>
+
+
+
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <span class="logo-symbol">✦</span>
+
+        <span>CRUCIFY</span>
+
+    </div>
+
+
+    <nav class="navigation">
+
+        <a href="#home">HOME</a>
+
+        <a href="#rift">RIFT</a>
+
+        <a href="#social">SOCIAL</a>
+
+        <a href="#about">ABOUT</a>
+
+    </nav>
+
+
+    <button
+        id="themeButton"
+        class="theme-button"
+        type="button"
+        aria-label="Ganti mode">
+
+        ☀️
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+     ========================================================= -->
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+
+        <div class="small-title">
+
+            ✦ RIFT PARTY COMMUNITY ✦
+
+        </div>
+
+
+        <h1>
+
+            CRUCIFY
+
+            <span>RIFT PARTY</span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Enter the Rift.<br>
+
+            Find your party.<br>
+
+            Make your own story.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+            <!-- JOIN PERTAMA -->
+
+            <a
+                href="#"
+                class="button primary-button join-trigger">
+
+                JOIN THE PARTY
+
+            </a>
+
+
+            <a
+                href="#rift"
+                class="button secondary-button">
+
+                ENTER RIFT
+
+            </a>
+
+
+        </div>
+
+
+        <div class="hero-status">
+
+            <span class="status-dot"></span>
+
+            RIFT ONLINE
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="hero-gif">
+
+        <div class="gif-frame">
+
+            <div class="gif-label">
+
+                LIVE RIFT
+
+            </div>
+
+
+            <img
+                src="assets/showreel.gif"
+                alt="Animated Rift Warper">
+
+
+            <div class="gif-corner corner-one"></div>
+
+            <div class="gif-corner corner-two"></div>
+
+            <div class="gif-corner corner-three"></div>
+
+            <div class="gif-corner corner-four"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RIFT
+     ========================================================= -->
+
+<section id="rift" class="section">
+
+
+    <div class="section-heading">
+
+        <span>01</span>
+
+        <h2>ENTER THE RIFT</h2>
+
+        <p>A place where everyone meets.</p>
+
+    </div>
+
+
+
+    <div class="rift-cards">
+
+
+        <a
+            href="#"
+            class="rift-card discord-card"
+            data-platform="Discord"
+            id="discordCard">
+
+
+            <div class="card-number">
+
+                01
+
+            </div>
+
+
+            <div class="card-icon">
+
+                ◉
+
+            </div>
+
+
+            <div class="card-content">
+
+                <h3>DISCORD</h3>
+
+                <p>
+
+                    Join the main community,
+                    chat and find your party.
+
+                </p>
+
+            </div>
+
+
+            <span class="card-arrow">
+
+                →
+
+            </span>
+
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+     ========================================================= -->
+
+<section id="about" class="about-section">
+
+
+    <div class="about-image">
+
+        <img
+            src="assets/showreel.gif"
+            alt="Crucify Rift Animation">
+
+    </div>
+
+
+
+    <div class="about-content">
+
+
+        <div class="section-number">
+
+            02
+
+        </div>
+
+
+        <h2>
+
+            WHAT IS
+
+            <span>CRUCIFY RIFT PARTY?</span>
+
+        </h2>
+
+
+        <p>
+
+            Crucify Rift Party adalah sebuah
+            komunitas yang menjadi tempat berkumpul,
+            berkomunikasi dan berbagi aktivitas bersama.
+
+        </p>
+
+
+        <p>
+
+            Masuk ke Rift dan temukan party kamu sendiri.
+
+        </p>
+
+
+
+        <div class="about-info">
+
+
+            <div>
+
+                <strong>24/7</strong>
+
+                <span>COMMUNITY</span>
+
+            </div>
+
+
+            <div>
+
+                <strong>1</strong>
+
+                <span>SOCIAL</span>
+
+            </div>
+
+
+            <div>
+
+                <strong>∞</strong>
+
+                <span>PARTY</span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+     ========================================================= -->
+
+<section class="cta-section">
+
+
+    <div class="cta-content">
+
+
+        <span>
+
+            THE RIFT IS OPEN
+
+        </span>
+
+
+        <h2>
+
+            READY TO
+
+            <strong>ENTER?</strong>
+
+        </h2>
+
+
+        <!-- JOIN KEDUA / TOMBOL YANG SAMA FUNGSINYA -->
+
+        <a
+            href="#"
+            id="joinCrucify"
+            class="button primary-button join-trigger">
+
+            JOIN CRUCIFY
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="footer">
+
+
+    <div class="footer-logo">
+
+        ✦ CRUCIFY RIFT PARTY
+
+    </div>
+
+
+    <p>
+
+        © 2026 Crucify Rift Party.
+        All rights reserved.
+
+    </p>
+
+
+
+    <div id="social" class="footer-social">
+
+
+        <a
+            href="#"
+            id="footerDiscord"
+            class="discord-footer-link interactive"
+            aria-label="Join Crucify Party Discord">
+
+
+            <span>
+
+                DISCORD
+
+            </span>
+
+
+            <strong>
+
+                ↗
+
+            </strong>
+
+
+        </a>
+
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =========================================================
+     JOIN WARNING
+     ========================================================= -->
+
+<div
+    id="joinWarning"
+    class="join-warning"
+    aria-hidden="true">
+
+
+    <div class="warning-box">
+
+
+        <!-- LOGO MERAH -->
+
+        <div class="warning-symbol">
+
+            ⚠
+
+        </div>
+
+
+        <!-- LABEL EMAS -->
+
+        <span class="warning-small">
+
+            CRUCIFY RIFT SECURITY CHECK
+
+        </span>
+
+
+        <!-- JUDUL -->
+
+        <h2>
+
+            ARE YOU
+
+            <span>REALLY SURE?</span>
+
+        </h2>
+
+
+        <!-- TEKS PUTIH -->
+
+        <p class="warning-text">
+
+            Kalau anda benar-benar yakin ingin
+            join <strong>CRUCIFY</strong>,
+            pastikan anda memang siap menjadi
+            bagian dari komunitas ini.
+
+        </p>
+
+
+
+        <!-- RULES -->
+
+        <ul class="warning-list">
+
+
+            <li>
+
+                Harus benar-benar aktif
+                dan mau ikut ngumpul.
+
+            </li>
+
+
+            <li>
+
+                Tidak ada namanya masuk
+                hanya untuk ngerusuh.
+
+            </li>
+
+
+            <li>
+
+                Wajib menghargai semua
+                member yang ada.
+
+            </li>
+
+
+            <li>
+
+                Sudah yakin?
+                Baca semua <strong>RULES</strong>
+                sebelum bergabung.
+
+            </li>
+
+
+        </ul>
+
+
+
+        <!-- PESAN AKHIR -->
+
+        <div class="warning-final">
+
+            Kalau kamu memang
+
+            <strong>benar-benar yakin</strong>
+
+            ingin bergabung...
+
+            <br>
+            <br>
+
+            Silahkan kembali ke atas,
+            lalu tekan
+
+            <strong>JOIN CRUCIFY</strong>
+
+            sekali lagi.
+
+        </div>
+
+
+
+        <!-- PETUNJUK -->
+
+        <div class="warning-direction">
+
+            ↑
+
+            <br>
+
+            KEMBALI KE ATAS
+
+            <br>
+
+            TEKAN JOIN CRUCIFY LAGI
+
+        </div>
+
+
+
+        <!-- TOMBOL -->
+
+        <button
+            id="warningClose"
+            class="warning-close"
+            type="button">
+
+            SAYA SUDAH YAKIN —
+            KEMBALI KE ATAS
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT JOIN PRANK
+     ========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       AMBIL ELEMENT
+       ===================================================== */
+
+    const joinButtons =
+        document.querySelectorAll(".join-trigger");
+
+    const warning =
+        document.getElementById("joinWarning");
+
+    const closeButton =
+        document.getElementById("warningClose");
+
+    const discordCard =
+        document.getElementById("discordCard");
+
+    const footerDiscord =
+        document.getElementById("footerDiscord");
+
+
+    /* =====================================================
+       LINK DISCORD
+       ===================================================== */
+
+    const discordURL =
+        "https://discord.gg/TXmskT5Vx";
+
+
+    /* =====================================================
+       STATUS
+       ===================================================== */
+
+    let alreadyWarned = false;
+
+
+
+    /* =====================================================
+       BUKA DISCORD
+       ===================================================== */
+
+    function openDiscord() {
+
+        window.open(
+            discordURL,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       TAMPILKAN WARNING
+       ===================================================== */
+
+    function showWarning() {
+
+        warning.classList.add("show");
+
+        warning.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+
+    /* =====================================================
+       TUTUP WARNING
+       ===================================================== */
+
+    function closeWarning() {
+
+        alreadyWarned = true;
+
+        warning.classList.remove("show");
+
+        warning.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.style.overflow = "";
+
+
+
+        /* KEMBALI KE PALING ATAS */
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+
+        /* EFEK JOIN */
+
+        joinButtons.forEach(function (button) {
+
+            button.classList.add("join-ready");
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       SEMUA TOMBOL JOIN
+       ===================================================== */
+
+    joinButtons.forEach(function (button) {
+
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                /* KLIK PERTAMA */
+
+                if (!alreadyWarned) {
+
+                    showWarning();
+
+                    return;
+
+                }
+
+
+                /* KLIK KEDUA */
+
+                openDiscord();
+
+            },
+            true
+        );
+
+
+    });
+
+
+
+    /* =====================================================
+       TOMBOL "SAYA SUDAH YAKIN"
+       ===================================================== */
+
+    closeButton.addEventListener(
+        "click",
+        function () {
+
+            closeWarning();
+
+        }
+    );
+
+
+
+    /* =====================================================
+       KLIK DI LUAR BOX
+       ===================================================== */
+
+    warning.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target === warning
+            ) {
+
+                closeWarning();
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       ESC
+       ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                warning.classList.contains("show")
+            ) {
+
+                closeWarning();
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       DISCORD CARD
+       ===================================================== */
+
+    if (discordCard) {
+
+        discordCard.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                if (!alreadyWarned) {
+
+                    showWarning();
+
+                    return;
+
+                }
+
+
+                openDiscord();
+
+            },
+            true
+        );
+
+    }
+
+
+
+    /* =====================================================
+       FOOTER DISCORD
+       ===================================================== */
+
+    if (footerDiscord) {
+
+        footerDiscord.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                if (!alreadyWarned) {
+
+                    showWarning();
+
+                    return;
+
+                }
+
+
+                openDiscord();
+
+            },
+            true
+        );
+
+    }
+
+
+});
+
+</script>
+
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
